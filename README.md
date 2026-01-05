@@ -5,4 +5,5 @@ source code in cube.cpp
 to run the code, run:
 
 docker build -t cube .
+
 docker run -it --rm --init cube
