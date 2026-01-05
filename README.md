@@ -2,7 +2,7 @@ raster based spinning cube with projection equations. uses terminal to output fr
 
 source code in cube.cpp
 
-to run the code, run:
+to run the code, run: (must have docker installed)
 
 docker build -t cube .
 
