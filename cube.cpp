@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <iostream>
+#include <cstring>
 #include <string>
+#include <chrono>
+#include <thread>
 #include <math.h>
 #include <cstdio>
 #ifndef _WIN32
@@ -28,6 +31,10 @@ void hideCursor() {
     SetConsoleCursorInfo(hOut, &cursorInfo);
 }
 #endif
+
+void hideCursor() {
+    std::cout << "\033[?25l" << std::flush;
+}
 
 float A, B, C;
 
@@ -99,20 +106,12 @@ void calculateSurface(float cubeX, float cubeY, float cubeZ, int ch)
 
 int main()
 {
-    std::cout << "(Make sure the console is fully windowed) Press enter to proceed" << std::endl;
-    std::string a;
-    std::getline(std::cin, a);
-
-
     system("cls");
     hideCursor();
 
-    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    COORD coord = { 0, 0 };
-
     while (true) 
     {
-        SetConsoleCursorPosition(hOut, coord);
+        std::cout << "\033[H" << std::flush;
 
         // sizeof(float) is because we need to multiply width and height by the bytesize of float
         memset(buffer, backgroundASCIIcode, width * height);
@@ -143,7 +142,7 @@ int main()
         B += 0.15;
         C += 0.03;
 
-        //usleep(1000);
+        std::this_thread::sleep_for(std::chrono::milliseconds(75));
     }
     return 0;
 }
