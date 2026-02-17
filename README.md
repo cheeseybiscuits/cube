@@ -1,3 +1,7 @@
+# Spinning Cube ⬜
+
+A cube that spins using rotation matrices, a bit of Linear Algebra, projection equations, and terminal management! Uses key concepts of Linear Algebra such as matrix multiplication to get the rotation matrices of each side of the cube. 
+
 raster based spinning cube with projection equations. uses terminal to output frames
 
 source code in cube.cpp
